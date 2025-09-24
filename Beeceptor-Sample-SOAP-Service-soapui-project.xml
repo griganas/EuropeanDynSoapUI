@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="19d24bc5-6096-4bec-8293-7aca7c9b6e7e" activeEnvironment="Default" name="Beeceptor Sample SOAP Service" resourceRoot="" soapui-version="5.9.1" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="82b56044-b41b-4355-8715-2f0ff310a67b" wsaVersion="NONE" name="CountryInfoBinding" type="wsdl" bindingName="{https://soap-service-free.mock.beeceptor.com/CountryInfoService}CountryInfoBinding" soapVersion="1_1" anonymous="optional" definition="https://soap-service-free.mock.beeceptor.com/CountryInfoService?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="https://soap-service-free.mock.beeceptor.com/CountryInfoService?WSDL"><con:part><con:url>https://soap-service-free.mock.beeceptor.com/CountryInfoService?WSDL</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="https://soap-service-free.mock.beeceptor.com/CountryInfoService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="https://soap-service-free.mock.beeceptor.com/CountryInfoService" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema targetNamespace="https://soap-service-free.mock.beeceptor.com/CountryInfoService">
+      <xsd:element name="ListOfContinentsByName" type="tns:ListOfContinentsByNameType"/>
+      <xsd:element name="ListOfContinentsByNameResponse" type="tns:ListOfContinentsByNameResponseType"/>
+      <xsd:element name="ListOfCountryNamesByName" type="tns:ListOfCountryNamesByNameType"/>
+      <xsd:element name="ListOfCountryNamesByNameResponse" type="tns:ListOfCountryNamesByNameResponseType"/>
+      <xsd:complexType name="ListOfContinentsByNameType"/>
+      <xsd:complexType name="ListOfContinentsByNameResponseType">
+        <xsd:sequence>
+          <xsd:element name="ListOfContinentsByNameResult" type="tns:ArrayOfContinents"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ListOfCountryNamesByNameType"/>
+      <xsd:complexType name="ListOfCountryNamesByNameResponseType">
+        <xsd:sequence>
+          <xsd:element name="ListOfCountryNamesByNameResult" type="tns:ArrayOfCountryNames"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfContinents">
+        <xsd:sequence>
+          <xsd:element name="tContinent" type="tns:Continent" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ArrayOfCountryNames">
+        <xsd:sequence>
+          <xsd:element name="tCountryCodeAndName" type="tns:CountryCodeAndName" maxOccurs="unbounded"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Continent">
+        <xsd:sequence>
+          <xsd:element name="sCode" type="xsd:string"/>
+          <xsd:element name="sName" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="CountryCodeAndName">
+        <xsd:sequence>
+          <xsd:element name="sISOCode" type="xsd:string"/>
+          <xsd:element name="sName" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ListOfContinentsByNameRequest">
+    <wsdl:part name="parameters" element="tns:ListOfContinentsByName"/>
+  </wsdl:message>
+  <wsdl:message name="ListOfContinentsByNameResponse">
+    <wsdl:part name="parameters" element="tns:ListOfContinentsByNameResponse"/>
+  </wsdl:message>
+  <wsdl:message name="ListOfCountryNamesByNameRequest">
+    <wsdl:part name="parameters" element="tns:ListOfCountryNamesByName"/>
+  </wsdl:message>
+  <wsdl:message name="ListOfCountryNamesByNameResponse">
+    <wsdl:part name="parameters" element="tns:ListOfCountryNamesByNameResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CountryInfoPortType">
+    <wsdl:operation name="ListOfContinentsByName">
+      <wsdl:input message="tns:ListOfContinentsByNameRequest"/>
+      <wsdl:output message="tns:ListOfContinentsByNameResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="ListOfCountryNamesByName">
+      <wsdl:input message="tns:ListOfCountryNamesByNameRequest"/>
+      <wsdl:output message="tns:ListOfCountryNamesByNameResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CountryInfoBinding" type="tns:CountryInfoPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ListOfContinentsByName">
+      <soap:operation soapAction="https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso/ListOfContinentsByName"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListOfCountryNamesByName">
+      <soap:operation soapAction="https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso/ListOfCountryNamesByName"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CountryInfoService">
+    <wsdl:port name="CountryInfoPort" binding="tns:CountryInfoBinding">
+      <soap:address location="https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso</con:endpoint></con:endpoints><con:operation id="8cc74ffc-404d-4eca-8c9f-6179bae6ad1e" isOneWay="false" action="https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso/ListOfContinentsByName" name="ListOfContinentsByName" bindingOperationName="ListOfContinentsByName" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4d774056-6a89-43c6-b02d-7ae568e0d15d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:coun="https://soap-service-free.mock.beeceptor.com/CountryInfoService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <coun:ListOfContinentsByName/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso/ListOfContinentsByName"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="3ea0c76d-3938-4ae1-8ec6-63d3fcd9100c" isOneWay="false" action="https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso/ListOfCountryNamesByName" name="ListOfCountryNamesByName" bindingOperationName="ListOfCountryNamesByName" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ab48591a-b772-405b-9b28-21dc58696f6f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:coun="https://soap-service-free.mock.beeceptor.com/CountryInfoService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <coun:ListOfCountryNamesByName/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso/ListOfCountryNamesByName"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="e960871b-78ad-4239-b684-3298f9021e4d" name="BeeceptorSOAP_Suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="8532d6c7-0e5f-4267-8bc0-89abba282e06" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="List Continents by Name" searchProperties="true"><con:settings/><con:testStep type="request" id="c5a61400-9266-4c50-9cff-030a294842e4" name="ListOfContinentsByName - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountryInfoBinding</con:interface><con:operation>ListOfContinentsByName</con:operation><con:request name="ListOfContinentsByName - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="eb6aad18-cbc1-4c85-b770-5bf87b827de7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:coun="https://soap-service-free.mock.beeceptor.com/CountryInfoService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <coun:ListOfContinentsByName/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="34d546c1-9f86-4ea8-abc1-90fe4a85dc80" name="SOAP Response"/><con:assertion type="XPath Match" id="3eff52a0-cd6c-487a-bb3a-4af0f458e706" name="List"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace m='http://www.oorsprong.org/websamples.countryinfo';
+
+count(//m:ListOfContinentsByNameResult/m:tContinent)>0</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" id="c6db79d6-18f4-4851-afe9-49e576eec5fb" name="Ordered alphabetically"><con:configuration><scriptText>def xml = new XmlSlurper().parseText(messageExchange.responseContent)
+
+def continents = xml.'**'.findAll { it.name() == 'sName' }*.text()
+
+assert continents == continents.sort()
+</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso/ListOfContinentsByName"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="e6e192ea-db47-40de-99f2-bafdacb1e8aa" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ListOfCountryNamesByName" searchProperties="true"><con:settings/><con:testStep type="request" id="5bcc7bd7-b056-4cb7-b1c0-14cd8861ebaa" name="ListOfCountryNamesByName - Request 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountryInfoBinding</con:interface><con:operation>ListOfCountryNamesByName</con:operation><con:request name="ListOfCountryNamesByName - Request 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType="" id="ae4f4482-33d5-4dae-9b51-755a68465b36"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:coun="https://soap-service-free.mock.beeceptor.com/CountryInfoService">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <coun:ListOfCountryNamesByName/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="4e80e480-631a-4057-9581-3b0e7f05ce37" name="SOAP Response"/><con:assertion type="XPath Match" id="4c4ef032-8a03-487b-a21c-8be122349e57" name="List"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace m='http://www.oorsprong.org/websamples.countryinfo';
+count(//m:ListOfCountryNamesByNameResult/m:tCountryCodeAndName)>0</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="GroovyScriptAssertion" id="92b44095-cd3b-4658-8fd0-ed2f88df76f4" name="Ordered alphabetically"><con:configuration><scriptText>def xml = new XmlSlurper().parseText(messageExchange.responseContent)
+
+def Country = xml.'**'.findAll { it.name() == 'sName' }*.text()
+
+assert Country == Country.sort()
+</scriptText></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso/ListOfCountryNamesByName"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="03f9f76e-41ae-45fd-9c9f-b097f78c7e6a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="CountryISOCode" searchProperties="true"><con:settings/><con:testStep type="request" name="GreeceISOCode" id="de3c7c56-70c9-4919-a771-95dc2dcc0f4b"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CountryInfoBinding</con:interface><con:operation>ListOfCountryNamesByName</con:operation><con:request name="GreeceISOCode" id="1118c23e-d2f3-466d-87f7-e2ef16c8bd9c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://soap-service-free.mock.beeceptor.com/CountryInfoService.wso</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:coun="https://soap-service-free.mock.beeceptor.com/CountryInfoService">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <coun:ListOfCountryNamesByName/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="ffc45332-bb53-4992-b363-ea4322388a0b"/><con:assertion type="XPath Match" id="eb87842d-750b-4e90-bac5-f986369455a8" name="GreeceISOCode=GR"><con:configuration><path>declare namespace soap='http://schemas.xmlsoap.org/soap/envelope/';
+declare namespace m='http://www.oorsprong.org/websamples.countryinfo';
+//m:ListOfCountryNamesByNameResult/m:tCountryCodeAndName[m:sName='Greece']/m:sISOCode</path><content>GR</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
